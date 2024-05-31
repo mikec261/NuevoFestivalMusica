@@ -31,7 +31,7 @@ function crearGaleria() {
         imagen.loading = 'lazy'
         imagen.width = "300"
         imagen.height = "200"
-        imagen.src = `src/img/gallery/full/${i}.jpg` // Utilizar comillas invertidas aquí
+        imagen.src = `src/img/gallery/thumb/${i}.jpg` // Utilizar comillas invertidas aquí
         imagen.alt = 'Imagen Galeria'
 
 

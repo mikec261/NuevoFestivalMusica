@@ -23,34 +23,37 @@ function navegacionFija() {
 }
 
 function crearGaleria() {
-    const galeria = document.querySelector('.galeria-imagenes') // Corregir este selector según corresponda
+    const galeria = document.querySelector('.galeria-imagenes'); // Corregir este selector según corresponda
 
-    const CANTIDAD_IMAGENES = 16
+    const CANTIDAD_IMAGENES = 16;
     for (let i = 1; i <= CANTIDAD_IMAGENES; i++) {
-        const imagen = document.createElement('IMG')
+        const picture = document.createElement('PICTURE');
 
-        imagen.innerHTML = `
-            <source srcset="build/img/gallery/thumb/${i}.avif" type="image/avif">
-            <source srcset="build/img/gallery/thumb/${i}.webp" type="image/webp">
-            <img loading="lazy" width="200" height="300" src="build/img/gallery/thumb/${i}.jpg" alt="imagen galeria">
-        `;
+        const sourceAvif = document.createElement('SOURCE');
+        sourceAvif.srcset = `build/img/gallery/thumb/${i}.avif`;
+        sourceAvif.type = 'image/avif';
 
-        /*
-        CARGA IMNAGENES FIJAS EN UN SOLO FORMATO 
+        const sourceWebp = document.createElement('SOURCE');
+        sourceWebp.srcset = `build/img/gallery/thumb/${i}.webp`;
+        sourceWebp.type = 'image/webp';
 
-        imagen.loading = 'lazy'
-        imagen.width = "300"
-        imagen.height = "200"
-        imagen.src = `src/img/gallery/thumb/${i}.jpg` // Utilizar comillas invertidas aquí
-        imagen.alt = 'Imagen Galeria'*/
+        const img = document.createElement('IMG');
+        img.loading = 'lazy';
+        img.width = 200;
+        img.height = 300;
+        img.src = `build/img/gallery/thumb/${i}.jpg`;
+        img.alt = `imagen galeria ${i}`;
 
+        // Event Handler
+        img.onclick = function () {
+            mostrarImagen(i);
+        };
 
-        //Event Handler
-        imagen.onclick = function () {
-            mostrarImagen(i)
-        }
+        picture.appendChild(sourceAvif);
+        picture.appendChild(sourceWebp);
+        picture.appendChild(img);
 
-        galeria.appendChild(imagen)
+        galeria.appendChild(picture);
     }
 }
 

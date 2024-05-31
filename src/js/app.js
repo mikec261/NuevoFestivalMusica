@@ -28,11 +28,21 @@ function crearGaleria() {
     const CANTIDAD_IMAGENES = 16
     for (let i = 1; i <= CANTIDAD_IMAGENES; i++) {
         const imagen = document.createElement('IMG')
+
+        imagen.innerHTML = `
+            <source srcset="build/img/gallery/thumb/${i}.avif" type="image/avif">
+            <source srcset="build/img/gallery/thumb/${i}.webp" type="image/webp">
+            <img loading="lazy" width="200" height="300" src="build/img/gallery/thumb/${i}.jpg" alt="imagen galeria">
+        `;
+
+        /*
+        CARGA IMNAGENES FIJAS EN UN SOLO FORMATO 
+
         imagen.loading = 'lazy'
         imagen.width = "300"
         imagen.height = "200"
         imagen.src = `src/img/gallery/thumb/${i}.jpg` // Utilizar comillas invertidas aquí
-        imagen.alt = 'Imagen Galeria'
+        imagen.alt = 'Imagen Galeria'*/
 
 
         //Event Handler

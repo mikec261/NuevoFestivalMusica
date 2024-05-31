@@ -28,8 +28,12 @@ function crearGaleria() {
     const CANTIDAD_IMAGENES = 16
     for (let i = 1; i <= CANTIDAD_IMAGENES; i++) {
         const imagen = document.createElement('IMG')
+        imagen.loading = 'lazy'
+        imagen.width = "300"
+        imagen.height = "200"
         imagen.src = `src/img/gallery/full/${i}.jpg` // Utilizar comillas invertidas aquí
         imagen.alt = 'Imagen Galeria'
+
 
         //Event Handler
         imagen.onclick = function () {
